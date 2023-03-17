@@ -8,18 +8,23 @@ import com.datn.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
-@Service
+@Service("userSV")
 public class UserService implements IUserService {
 
     @Autowired
     private UserRepository userRepository;
+//    @Autowired
+//    private IUserService service;
     @Autowired
     private UserConverter converter;
 
@@ -30,7 +35,8 @@ public class UserService implements IUserService {
             Optional<User> user = userRepository.findById(dto.getId());
             entity = converter.toEntity(dto,user.get());
         }else {
-            entity = converter.toEntity(dto);
+            dto.setPassword(new String(Base64.getEncoder().encode(dto.getPassword().getBytes())));
+            entity = converter.toEntity(dto, (new String(Base64.getEncoder().encode(dto.getPassword().getBytes()))));
         }
         entity = userRepository.save(entity);
         return converter.toDTO(entity);
@@ -47,13 +53,8 @@ public class UserService implements IUserService {
 //        List<User> users = page.toList();
 //        List<UserDTO> userDTOS = users.stream().map((i)-> converter.toDTO(i)).collect(Collectors.toList());
 //        return  userDTOS;
+
         return userRepository.findAll(pageable).toList().stream().map((i)->converter.toDTO(i)).collect(Collectors.toList());
     }
-
-    @Override
-    public Optional<User> findById(Long id) {
-       return  userRepository.findById(id);
-    }
-
 
 }

@@ -2,18 +2,23 @@ package com.datn.converter;
 
 import com.datn.dto.UserDTO;
 import com.datn.entities.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import java.util.Date;
 
 @Component
 public class UserConverter {
-    public User toEntity(UserDTO dto){
+    public User toEntity(UserDTO dto,String pass){
         User entity = new User();
         entity.setUserName(dto.getUserName());
-        entity.setPassword(dto.getPassword());
+        entity.setPassword(pass);
         entity.setFullName(dto.getFullName());
         entity.setPhone(dto.getPhone());
         entity.setEmail(dto.getEmail());
         entity.setAddress(dto.getAddress());
+        entity.setCreatedDate(new Date());
         return entity;
     }
     public UserDTO toDTO(User user){

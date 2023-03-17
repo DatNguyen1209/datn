@@ -1,14 +1,13 @@
 package com.datn.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -33,5 +32,9 @@ public class User extends BaseEntities{
     @Column(name = "email")
     private String email;
     @OneToMany(mappedBy = "user")
+    @JsonManagedReference
     private List<OrderHotelDetail> orderHotelDetails;
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_roles",referencedColumnName = "id")
+    private Set<Role> roles;
 }

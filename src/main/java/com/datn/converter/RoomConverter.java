@@ -2,14 +2,10 @@ package com.datn.converter;
 
 import com.datn.dto.RoomDTO;
 import com.datn.entities.Room;
-import com.datn.repository.HotelRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RoomConverter {
-    @Autowired
-    private HotelRepository hotelRepository;
     public Room toEntity(RoomDTO dto){
         Room room = new Room();
         room.setId(dto.getHotelId());

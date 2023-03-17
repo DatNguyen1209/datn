@@ -21,11 +21,11 @@ public class UserController {
     private UserRepository userRepository;
     @Autowired
     private UserService userService;
-    @GetMapping("/{id}")
+    @GetMapping("/getUserById/{id}")
     public Optional<User> getUserById(@PathVariable Long id){
         return userRepository.findById(id);
     }
-    @GetMapping("/")
+    @GetMapping("/getAllUser")
     public List<User> getAllUser(){
         return userRepository.findAll();
     }

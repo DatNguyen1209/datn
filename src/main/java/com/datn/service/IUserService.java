@@ -13,5 +13,4 @@ public interface IUserService {
     UserDTO save(UserDTO dto);
     void delete(Long ids);
     List<UserDTO> findAllWithPageable(Pageable pageable);
-    Optional<User> findById(Long id);
 }

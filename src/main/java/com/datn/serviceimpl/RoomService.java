@@ -8,7 +8,6 @@ import com.datn.repository.HotelRepository;
 import com.datn.repository.ImageRoomRepository;
 import com.datn.repository.RoomRepository;
 import com.datn.service.IRoomService;
-import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
