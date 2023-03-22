@@ -55,6 +55,7 @@ public class RoomService implements IRoomService {
                 room.setRoomName(dto.getRoomName());
                 room.setPrice(dto.getPrice());
                 room.setCapacity(dto.getCapacity());
+                room.setCreatedDate(new Date());
                 room.setBedType(dto.getBedType());
                 room.setStatus(dto.isStatus());
                 room.setHotelId(hotelRepository.getReferenceById(dto.getHotelId()));

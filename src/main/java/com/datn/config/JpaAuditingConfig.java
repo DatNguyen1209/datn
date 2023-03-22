@@ -40,7 +40,7 @@ public class JpaAuditingConfig {
                 .authorizeHttpRequests((authorize) ->
                         //authorize.anyRequest().authenticated()
                         authorize
-//                                .requestMatchers("/api/v1/auth/signup").permitAll()
+                                .requestMatchers("/api/v1/auth/signup").permitAll()
                                 .requestMatchers("/api/v1/auth/**").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/api/v1/**").permitAll()
                                 .anyRequest().authenticated()

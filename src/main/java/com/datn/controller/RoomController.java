@@ -19,6 +19,10 @@ public class RoomController {
     public List<Room> getAllRoom(){
         return roomService.getAllRoom();
     }
+    @GetMapping("/getbyId/{id}")
+    public Room  getById(@PathVariable("id") Long id){
+        return roomService.findById(id);
+    }
     @PostMapping("create")
     public void create(@RequestBody RoomDTO dto){
         roomService.save(dto);

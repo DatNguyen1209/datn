@@ -20,7 +20,7 @@ public class OrderConverter {
     public OrderHotelDetail toEntity(OrderDTO dto){
         OrderHotelDetail order = new OrderHotelDetail();
         order.setUser(userRepository.findByUserName(dto.getUserName()).orElseThrow(()->
-             new RuntimeException("Not Found!!!")));
+             new RuntimeException("User Not Found!!!")));
         order.setUserName(order.getUser().getUserName());
         order.setFullName(order.getUser().getFullName());
         order.setEmail(order.getUser().getEmail());

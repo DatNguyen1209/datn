@@ -18,7 +18,6 @@ public class OrderService implements IOrderService {
     private OrderRepository orderRepository;
     @Autowired
     OrderConverter converter;
-
     @Autowired
     private RoomRepository roomRepository;
     @Override
@@ -33,6 +32,7 @@ public class OrderService implements IOrderService {
             }
             orderRepository.save(orderHotelDetail);
         }catch (Exception e){
+            e.printStackTrace();
             throw new RuntimeException("Faild!!!");
         }
         return converter.toDTO(orderHotelDetail);

@@ -4,6 +4,8 @@ import com.datn.dto.RoomDTO;
 import com.datn.entities.Room;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 @Component
 public class RoomConverter {
     public Room toEntity(RoomDTO dto){
@@ -13,6 +15,7 @@ public class RoomConverter {
         room.setCapacity(dto.getCapacity());
         room.setStatus(dto.isStatus());
         room.setPrice(dto.getPrice());
+        room.setCreatedDate(new Date());
         room.setBedType(dto.getBedType());
 //        room.setImages(dto.getImages());
         return room;
@@ -33,6 +36,7 @@ public class RoomConverter {
         room.setRoomName(dto.getRoomName());
         room.setPrice(dto.getPrice());
         room.setBedType(dto.getBedType());
+        room.setModifiedDate(new Date());
         room.setCapacity(dto.getCapacity());
         return room;
 //        return new Room()

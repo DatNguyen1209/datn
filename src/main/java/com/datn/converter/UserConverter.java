@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.util.Base64;
 import java.util.Date;
 
 @Component
@@ -36,7 +37,7 @@ public class UserConverter {
     }
     public User toEntity(UserDTO dto,User user){
         user.setUserName(dto.getUserName());
-        user.setPassword(dto.getPassword());
+        user.setPassword(new String(Base64.getEncoder().encode(dto.getPassword().getBytes())));
         user.setFullName(dto.getFullName());
         user.setPhone(dto.getPhone());
         user.setEmail(dto.getEmail());
