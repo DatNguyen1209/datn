@@ -3,9 +3,12 @@ package com.datn.entities;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -13,7 +16,8 @@ import java.util.Set;
 @Table(name = "user")
 @Getter
 @Setter
-
+@AllArgsConstructor
+@NoArgsConstructor
 public class User extends BaseEntities{
     @NotNull
     @Column(name = "user_name")
@@ -37,4 +41,5 @@ public class User extends BaseEntities{
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "user_roles",referencedColumnName = "id")
     private Set<Role> roles;
+
 }

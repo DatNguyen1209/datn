@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/uploads")
+@RequestMapping("uploads/{fileName}")
 public class ImagesController {
     @Autowired
     private HotelService service;
-    @GetMapping("/{fileName}")
+    @GetMapping
     public ResponseEntity<byte[]> readFile(@PathVariable String fileName){
         try {
             byte[] bytes = service.readContentFile(fileName);

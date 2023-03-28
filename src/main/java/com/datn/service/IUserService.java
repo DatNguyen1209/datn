@@ -1,8 +1,10 @@
 package com.datn.service;
 
+import com.datn.dto.PageDto;
 import com.datn.dto.UserDTO;
 import com.datn.entities.User;
 import com.datn.repository.UserRepository;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
@@ -12,5 +14,7 @@ public interface IUserService {
 
     UserDTO save(UserDTO dto);
     void delete(Long ids);
-    List<UserDTO> findAllWithPageable(Pageable pageable);
+//    Page<UserDTO> findAllWithPageable(Pageable pageable);
+
+    PageDto<UserDTO> findAllWithPageable(int page, int size);
 }

@@ -30,6 +30,8 @@ public class UserConverter {
         dto.setUserName(user.getUserName());
         dto.setPassword(user.getPassword());
         dto.setFullName(user.getFullName());
+        dto.setCreatedDate(user.getCreatedDate());
+        dto.setModifiedDate(user.getModifiedDate());
         dto.setPhone(user.getPhone());
         dto.setEmail(user.getEmail());
         dto.setAddress(user.getAddress());
@@ -37,10 +39,8 @@ public class UserConverter {
     }
     public User toEntity(UserDTO dto,User user){
         user.setUserName(dto.getUserName());
-        user.setPassword(new String(Base64.getEncoder().encode(dto.getPassword().getBytes())));
         user.setFullName(dto.getFullName());
         user.setPhone(dto.getPhone());
-        user.setEmail(dto.getEmail());
         user.setEmail(dto.getEmail());
         return  user;
     }

@@ -5,6 +5,7 @@ import com.datn.dto.LoginDTO;
 import com.datn.dto.UserDTO;
 import com.datn.entities.Role;
 import com.datn.entities.User;
+import com.datn.enumerable.ERole;
 import com.datn.repository.RoleRepository;
 import com.datn.repository.UserRepository;
 import jakarta.annotation.security.PermitAll;
@@ -61,7 +62,7 @@ public class AuthControlller {
         // create user object
         User user = new User();
         String pas = passwordEncoder.encode(signUpDto.getPassword());
-        Role roles = roleRepository.findByName("ADMIN").get();
+        Role roles = roleRepository.findByName(("ADMIN"));
         user.setRoles(Collections.singleton(roles));
 
         user = converter.toEntity(signUpDto, pas);

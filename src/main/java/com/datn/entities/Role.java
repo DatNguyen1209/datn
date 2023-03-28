@@ -1,16 +1,20 @@
 package com.datn.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.Set;
 
 @Setter
 @Getter
 @Entity
-@Table(name = "roles")
-
+@Data
+@Table(name = "role")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Role extends BaseEntities{
+
+    @Column(length = 20)
     private String name;
 
 }

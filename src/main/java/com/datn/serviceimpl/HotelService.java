@@ -144,7 +144,7 @@ public class HotelService implements IHotelService {
     @Override
     public byte[] readContentFile(String fileName) {
         try {
-            Path file = root.resolve(fileName);
+            Path file = root.resolve(fileName).normalize();
             Resource resource = new UrlResource(file.toUri());
             if(resource.exists() || resource.isReadable()){
                 byte[] bytes =StreamUtils.copyToByteArray(resource.getInputStream());

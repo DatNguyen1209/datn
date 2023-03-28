@@ -4,6 +4,8 @@ import com.datn.dto.HotelDTO;
 import com.datn.entities.Hotel;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 @Component
 public class HotelConverter {
     public Hotel toEntities(HotelDTO dto){
@@ -12,6 +14,8 @@ public class HotelConverter {
         entity.setPhone(dto.getPhone());
         entity.setAddress(dto.getAddress());
         entity.setRated(dto.getRated());
+        entity.setCreatedDate(new Date());
+        entity.setFromPrice(dto.getFromPrice());
         entity.setDescription(dto.getDescription());
         entity.setHotelType(dto.getHotelType());
         entity.setViewers(dto.getViewers());
@@ -37,7 +41,9 @@ public class HotelConverter {
     public Hotel toEntities(HotelDTO dto, Hotel hotel){
         hotel.setHotelName(dto.getHotelName());
         hotel.setPhone(dto.getPhone());
+        hotel.setModifiedDate(new Date());
         hotel.setAddress(dto.getAddress());
+        hotel.setFromPrice(dto.getFromPrice());
         hotel.setRated(dto.getRated());
         hotel.setDescription(dto.getDescription());
         hotel.setHotelType(dto.getHotelType());

@@ -17,4 +17,6 @@ public class UserDTO extends BaseEntities {
     private String phone;
     private String address;
     private String email;
+
+
 }
